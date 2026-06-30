@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sajiwa Beyond The Desk — Immersion Card</title>
+<title>Jiwa: Field Edition — Immersion Card</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Syne:wght@700;800&display=swap');
 
@@ -487,6 +487,153 @@
   .char-count { font-size: 10px; color: #CCCCCC; text-align: right; margin-top: 4px; }
 
 
+
+  /* ── EMOJI SLIDER ── */
+  .emoji-question {
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: #888888;
+    display: block; margin-bottom: 12px;
+  }
+  .emoji-row {
+    display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .emoji-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 12px 16px; border-radius: 12px;
+    border: 1.5px solid #E0E0E0;
+    background: #FFFFFF; cursor: pointer;
+    transition: all 0.2s; flex: 1; min-width: 52px;
+  }
+  .emoji-btn:hover { border-color: var(--red); transform: translateY(-2px); }
+  .emoji-btn.selected {
+    border-color: var(--red);
+    background: rgba(255,57,71,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,57,71,0.15);
+  }
+  .emoji-icon { font-size: 24px; line-height: 1; }
+  .emoji-label { font-size: 9px; color: #888888; font-weight: 500; text-align: center; }
+  .emoji-btn.selected .emoji-label { color: var(--red); font-weight: 700; }
+
+  body.dark .emoji-btn {
+    background: #1E1E1E; border-color: #333333;
+  }
+  body.dark .emoji-btn.selected {
+    background: rgba(255,57,71,0.1); border-color: var(--red);
+  }
+
+
+  /* ── OBSERVATION CHECKLIST ── */
+  .obs-section { margin-bottom: 24px; }
+  .obs-section-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1.5px solid #FFE5E7;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .obs-section-title span { font-size: 16px; }
+
+  /* Yes/No item */
+  .obs-yesno {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 12px;
+    padding: 10px 14px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1.5px solid #F0F0F0;
+    border-radius: 8px; transition: all 0.2s;
+  }
+  .obs-yesno:hover { border-color: #E0E0E0; }
+  .obs-yesno-text { font-size: 12px; color: #333333; flex: 1; line-height: 1.5; }
+  .obs-yesno-btns { display: flex; gap: 6px; flex-shrink: 0; }
+  .yn-btn {
+    padding: 4px 12px; border-radius: 99px;
+    border: 1.5px solid #E0E0E0;
+    background: transparent; cursor: pointer;
+    font-size: 11px; font-weight: 600;
+    transition: all 0.15s;
+  }
+  .yn-btn.yes:hover, .yn-btn.yes.active { background: #22C55E; border-color: #22C55E; color: #fff; }
+  .yn-btn.no:hover, .yn-btn.no.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+  /* Level item */
+  .obs-level {
+    padding: 10px 14px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1.5px solid #F0F0F0;
+    border-radius: 8px; transition: all 0.2s;
+  }
+  .obs-level:hover { border-color: #E0E0E0; }
+  .obs-level-text { font-size: 12px; color: #333333; margin-bottom: 8px; line-height: 1.5; }
+  .obs-level-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .level-btn {
+    padding: 3px 10px; border-radius: 99px;
+    border: 1.5px solid #E0E0E0;
+    background: transparent; cursor: pointer;
+    font-size: 10px; font-weight: 600; color: #888;
+    transition: all 0.15s;
+  }
+  .level-btn:hover { border-color: var(--red); color: var(--red); }
+  .level-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+  /* Dark mode */
+  body.dark .obs-section-title { border-bottom-color: #2A2A2A; }
+  body.dark .obs-yesno, body.dark .obs-level {
+    background: #1E1E1E; border-color: #2A2A2A;
+  }
+  body.dark .obs-yesno-text, body.dark .obs-level-text { color: #CCCCCC; }
+  body.dark .yn-btn, body.dark .level-btn { border-color: #444; color: #888; }
+
+
+  /* ── SECTIONED CHECKLIST ── */
+  .check-section { margin-bottom: 20px; }
+  .check-section-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1.5px solid #FFE5E7;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .check-section-title::before {
+    content: ''; display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--red); flex-shrink: 0;
+  }
+
+  /* Yes/No style */
+  .check-yesno {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 14px; margin-bottom: 6px;
+    background: #FFFFFF; border: 1.5px solid #E0E0E0;
+    border-radius: 8px; cursor: pointer; transition: all 0.2s;
+  }
+  .check-yesno:hover { border-color: var(--red); }
+  .check-yesno.checked { border-color: var(--red); background: rgba(255,57,71,0.04); }
+  .check-yesno.checked .check-box { background: var(--red); border-color: var(--red); }
+  .check-yesno.checked .check-box::after { opacity: 1; }
+  .check-yesno .check-label { font-size: 12px; color: #333333; line-height: 1.4; }
+
+  /* Level style (1-5 pills) */
+  .check-level { margin-bottom: 10px; }
+  .check-level-label {
+    font-size: 12px; color: #333333; margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .level-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .level-pill {
+    padding: 5px 12px; border-radius: 99px;
+    border: 1.5px solid #E0E0E0; background: #FFFFFF;
+    font-size: 11px; font-weight: 600; color: #888888;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .level-pill:hover { border-color: var(--red); color: var(--red); }
+  .level-pill.selected { background: var(--red); border-color: var(--red); color: #FFFFFF; }
+
+  /* Dark mode */
+  body.dark .check-section-title { color: var(--red); border-bottom-color: #2A1A1A; }
+  body.dark .check-yesno { background: #1E1E1E; border-color: #333333; }
+  body.dark .check-yesno .check-label { color: #CCCCCC; }
+  body.dark .check-level-label { color: #CCCCCC; }
+  body.dark .level-pill { background: #1E1E1E; border-color: #333333; color: #888888; }
+
   /* ── THEME TOGGLE ── */
   .theme-toggle {
     width: 36px; height: 36px; border-radius: 50%;
@@ -591,18 +738,18 @@
 
 <!-- HEADER -->
 <header class="header">
-  <div class="header-brand"><span style="color:#FF3947">SAJIWA</span> BEYOND THE DESK</div>
+  <div class="header-brand">JIWA<span>:</span>FIELD EDITION</div>
   <div style="display:flex;align-items:center;gap:10px;">
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Ganti Tema">
       <span id="theme-icon">🌙</span>
     </button>
-    <img src="Jiwa Group_red (1).png" height="28" style="object-fit:contain;">
+    <div class="header-badge">Immersion Card</div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <p class="hero-eyebrow">Business Unit Immersion</p>
+  <p class="hero-eyebrow">Program Learning 2026 · OKR Wajib</p>
   <h1 class="hero-title">
     Immersion
     <span class="accent">Card.</span>
@@ -647,7 +794,7 @@
         <input type="text" id="f-nama" placeholder="Nama kamu" oninput="updateProgress()">
       </div>
       <div class="field">
-        <label>Department</label>
+        <label>Department / Role di HO</label>
         <select id="f-dept" onchange="updateProgress()">
           <option value="">Pilih Department</option>
           <option>Board Of Director</option>
@@ -709,45 +856,221 @@
       <span class="section-title">Experience Check</span>
       <div class="divider"></div>
     </div>
-    <div class="checklist" id="checklist-outlet">
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Opening Shift Ops</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Customer Experience</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Non-Coffee Beverage</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Bites Station</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Peak Hour Simulation</span>
-      </label>
+    <div id="checklist-outlet">
+
+      <!-- 1. OPENING SHIFT OPS -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>🌅</span> Opening Shift Ops</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 2 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. CUSTOMER EXPERIENCE -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>👥</span> Customer Experience</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Customer greeted within 10 seconds of entry?</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Staff made eye contact and smiled?</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. NON-COFFEE BEVERAGE -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>🥤</span> Non-Coffee Beverage</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">I made more than 5 beverages</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">I do clean as you go while crafting products</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BITES STATION -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>🍟</span> Bites Station</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. PEAK HOUR SIMULATION -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>⚡</span> Peak Hour Simulation</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="checklist hidden" id="checklist-hub">
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Admin Operations</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Runner Operations</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Rider Acquisition</span>
-      </label>
-      <label class="check-item" onclick="toggleCheck(this); updateProgress()">
-        <div class="check-box"></div>
-        <span class="check-label">Rider Monitoring</span>
-      </label>
+    <div class="hidden" id="checklist-hub">
+
+      <!-- 1. ADMIN OPERATIONS -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>📋</span> Admin Operations</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. RUNNER OPERATIONS -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>🏃</span> Runner Operations</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. RIDER ACQUISITION -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>🛵</span> Rider Acquisition</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. RIDER MONITORING -->
+      <div class="obs-section">
+        <div class="obs-section-title"><span>📡</span> Rider Monitoring</div>
+        <div class="obs-yesno">
+          <span class="obs-yesno-text">Placeholder checklist item 1 — edit sesuai kebutuhan</span>
+          <div class="obs-yesno-btns">
+            <button class="yn-btn yes" onclick="setYN(this,'yes')">Yes</button>
+            <button class="yn-btn no" onclick="setYN(this,'no')">No</button>
+          </div>
+        </div>
+        <div class="obs-level">
+          <div class="obs-level-text">Placeholder level item — edit sesuai kebutuhan</div>
+          <div class="obs-level-btns">
+            <button class="level-btn" onclick="setLevel(this)">Rendah</button>
+            <button class="level-btn" onclick="setLevel(this)">Cukup</button>
+            <button class="level-btn" onclick="setLevel(this)">Baik</button>
+            <button class="level-btn" onclick="setLevel(this)">Sangat Baik</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -773,7 +1096,7 @@
       </div>
       <div class="pov-card pov-think">
         <div class="pov-label">Think</div>
-        <div class="pov-question" id="q-think">Dari role-mu di HO, apa yang bisa kamu lakukan untuk support business ini jadi lebih baik?</div>
+        <div class="pov-question" id="q-think">Dari role-mu di HO, apa yang bisa kamu lakukan berbeda untuk support tim ini lebih baik?</div>
         <textarea id="f-think" placeholder="Tulis di sini..." oninput="updateProgress(); countChars(this, 'cc-think')"></textarea>
         <div class="char-count" id="cc-think">0 karakter</div>
       </div>
@@ -811,7 +1134,7 @@
       <div class="divider"></div>
     </div>
 
-<label class="emoji-question">Team Energy During The Shift</label>
+    <label class="emoji-question">Team Energy During The Shift</label>
     <div class="emoji-row" id="emoji-energy">
       <button type="button" class="emoji-btn" data-val="1" onclick="setEmoji(this, 'energy')">
         <span class="emoji-icon">😞</span>
@@ -897,6 +1220,15 @@
 <script>
   let currentType = 'outlet';
   let rating = 0;
+  let emojiScores = {};
+
+  function setEmoji(el, group) {
+    const container = document.getElementById('emoji-' + group);
+    container.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    emojiScores[group] = parseInt(el.dataset.val);
+    updateProgress();
+  }
 
   function setType(type) {
     currentType = type;
@@ -974,7 +1306,7 @@
   }
 
   // ── GANTI URL INI dengan URL Google Apps Script kamu ──
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymnVeQufKbAMoMQbcQxP7MUIqwgUh1HlzGhYhiJlf__ebauLh4qLtv5cWfaI00gntLBw/exec';
+  const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
   async function submitCard() {
     const nama = document.getElementById('f-nama').value.trim();
@@ -1014,6 +1346,7 @@
       aktivitas: checked,
       see, feel, think, word, action,
       rating: rating,
+      team_energy: emojiScores['energy'] || '',
       feedback_program: fbProgram,
       feedback_mentor: fbMentor,
     };
@@ -1083,6 +1416,27 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+
+  // ── OBSERVATION CHECKLIST ──
+  function setYN(btn, type) {
+    const group = btn.closest('.obs-yesno-btns');
+    group.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function setLevel(btn) {
+    const group = btn.closest('.obs-level-btns');
+    group.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ── LEVEL PILLS ──
+  function selectLevel(el) {
+    const pills = el.closest('.level-pills').querySelectorAll('.level-pill');
+    pills.forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+    updateProgress();
+  }
 
   // ── THEME TOGGLE ──
   function toggleTheme() {
